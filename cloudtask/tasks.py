@@ -195,7 +195,7 @@ class Task(object):
 
 
 def create_base_task(task: Callable, **kwargs):
-    execute = partial(task)
+    execute = staticmethod(partial(task))
     attrs: dict = dict(
         path=get_internal_task_path(task),
         execute=execute,
